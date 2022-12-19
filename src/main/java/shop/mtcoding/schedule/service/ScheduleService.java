@@ -1,6 +1,7 @@
 package shop.mtcoding.schedule.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,8 @@ public class ScheduleService {
         List<Todo> tList = todoRepository.findByUserId(userId);
 
         List<Follow> fList = followRepository.findFollowing(userId);
-        List<User> toUsers = fList.stream().map((f) -> f.getToUser()).toList();
+
+        List<User> toUsers = fList.stream().map((f) -> f.getToUser()).collect(Collectors.toList());
 
         return new HomeRespDto(sList, tList, toUsers);
     }

@@ -1,8 +1,8 @@
 package shop.mtcoding.schedule.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import shop.mtcoding.schedule.domain.follow.Follow;
 import shop.mtcoding.schedule.domain.follow.FollowRepository;
 import shop.mtcoding.schedule.domain.schedule.Schedule;
@@ -22,6 +20,7 @@ import shop.mtcoding.schedule.domain.todo.TodoRepository;
 import shop.mtcoding.schedule.domain.user.User;
 import shop.mtcoding.schedule.domain.user.UserEnum;
 import shop.mtcoding.schedule.domain.user.UserRepository;
+import shop.mtcoding.schedule.dto.UserDetailRespDto;
 import shop.mtcoding.schedule.handler.ex.CustomApiException;
 
 /*
@@ -58,15 +57,14 @@ public class UserService {
         return userPS;
     }
 
-    public UserDetailRespDto findUserDetail(Long detailPageUserId, Long loginUserId) {
+    public UserDetailRespDto 유저상세보기(Long detailPageUserId, Long loginUserId) {
         List<Schedule> sList = scheduleRepository.findByUserId(detailPageUserId);
         List<Todo> tList = todoRepository.findByUserId(detailPageUserId);
 
         List<Follow> tempFollowingList = followRepository.findFollowing(detailPageUserId);
         List<Follow> tempFollwerList = followRepository.findFollowing(detailPageUserId);
-
-        List<User> followingUser = tempFollowingList.stream().map((f) -> f.getToUser()).toList();
-        List<User> followerUser = tempFollwerList.stream().map((f) -> f.getFromUser()).toList();
+        List<User> followingUser = tempFollowingList.stream().map((f) -> f.getToUser()).collect(Collectors.toList());
+        List<User> followerUser = tempFollwerList.stream().map((f) -> f.getFromUser()).collect(Collectors.toList());
 
         boolean isMy = true;
         if (loginUserId != detailPageUserId) {
@@ -82,28 +80,6 @@ public class UserService {
         }
 
         return new UserDetailRespDto(isMy, isFollow, sList, tList, followingUser, followerUser);
-    }
-
-    @Setter
-    @Getter
-    public static class UserDetailRespDto {
-        private Boolean isMy; // 내페이지
-        private Boolean isFollow; // isMy = false 일때만 의미가 있음.
-        private List<Schedule> schedules = new ArrayList<>();
-        private List<Todo> todos = new ArrayList<>();
-        private List<User> followingUser = new ArrayList<>();
-        private List<User> followerUser = new ArrayList<>();
-
-        public UserDetailRespDto(Boolean isMy, Boolean isFollow, List<Schedule> schedules, List<Todo> todos,
-                List<User> followingUser, List<User> followerUser) {
-            this.isMy = isMy;
-            this.isFollow = isFollow;
-            this.schedules = schedules;
-            this.todos = todos;
-            this.followingUser = followingUser;
-            this.followerUser = followerUser;
-        }
-
     }
 
 }

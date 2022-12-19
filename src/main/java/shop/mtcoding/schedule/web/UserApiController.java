@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import shop.mtcoding.schedule.config.auth.LoginUser;
 import shop.mtcoding.schedule.domain.user.User;
 import shop.mtcoding.schedule.dto.ResponseDto;
-import shop.mtcoding.schedule.handler.ex.CustomApiException;
 import shop.mtcoding.schedule.service.UserService;
 
 @RequiredArgsConstructor
@@ -27,7 +26,7 @@ public class UserApiController {
             @AuthenticationPrincipal LoginUser loginUser) {
 
         return new ResponseEntity<>(
-                new ResponseDto<>(1, "성공", userService.findUserDetail(userId, loginUser.getUser().getId())),
+                new ResponseDto<>(1, "성공", userService.유저상세보기(userId, loginUser.getUser().getId())),
                 HttpStatus.OK);
     }
 
