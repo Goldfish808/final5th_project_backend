@@ -39,9 +39,9 @@ public class DevInit extends DummyObject {
             Category c3 = newCategory("놀이", CategoryEnum.ORANGE);
             categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
 
-            Schedule s1 = newSchedule(1, ssar);
-            Schedule s2 = newSchedule(2, ssar);
-            Schedule s3 = newSchedule(3, ssar);
+            Schedule s1 = newSchedule(1, ssar, c1);
+            Schedule s2 = newSchedule(2, ssar, c1);
+            Schedule s3 = newSchedule(3, ssar, c2);
             scheduleRepository.saveAll(Arrays.asList(s1, s2, s3));
 
             Todo t1 = newTodo("밥먹기", ssar);

@@ -32,13 +32,15 @@ public class DummyObject {
         return todo;
     }
 
-    protected Schedule newSchedule(int hour, User user) {
+    protected Schedule newSchedule(int hour, User user, Category category) {
         LocalDateTime startAt = LocalDateTime.now().minusHours(hour);
         LocalDateTime finishAt = LocalDateTime.now().plusHours(hour);
         Schedule schedule = Schedule.builder()
                 .title("밥먹는 시간 정하기")
                 .note("오늘은 밥먹어야 함")
                 .address("부산 진구 중앙대로")
+                .imgUrl("1.png")
+                .category(category)
                 .startAt(startAt)
                 .finishAt(finishAt)
                 .user(user)

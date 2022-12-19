@@ -46,6 +46,14 @@ public class Category {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    public String getCreatedAt() {
+        return CustomDateUtil.toStringFormat(createdAt);
+    }
+
+    public String getUpdatedAt() {
+        return CustomDateUtil.toStringFormat(createdAt);
+    }
+
     @Builder
     public Category(Long id, CategoryEnum color, String name, LocalDateTime updatedAt, LocalDateTime createdAt) {
         this.id = id;
@@ -53,14 +61,6 @@ public class Category {
         this.name = name;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
-    }
-
-    public String getCreatedAt() {
-        return CustomDateUtil.toStringFormat(createdAt);
-    }
-
-    public String getUpdatedAt() {
-        return CustomDateUtil.toStringFormat(createdAt);
     }
 
 }
