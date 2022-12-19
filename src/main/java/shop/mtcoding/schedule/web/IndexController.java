@@ -14,7 +14,7 @@ import shop.mtcoding.schedule.domain.schedule.Schedule;
 import shop.mtcoding.schedule.domain.schedule.ScheduleRepository;
 import shop.mtcoding.schedule.domain.todo.Todo;
 import shop.mtcoding.schedule.domain.todo.TodoRepository;
-import shop.mtcoding.schedule.dto.ResponseDto;
+import shop.mtcoding.schedule.dto.response.ResponseDto;
 
 @RequiredArgsConstructor
 @RestController

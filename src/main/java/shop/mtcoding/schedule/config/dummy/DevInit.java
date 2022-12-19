@@ -35,8 +35,8 @@ public class DevInit extends DummyObject {
             User haha = userRepository.save(newUser("haha"));
 
             Category c1 = newCategory("업무", CategoryEnum.PURPLE);
-            Category c2 = newCategory("일반", CategoryEnum.YELLOW);
-            Category c3 = newCategory("놀이", CategoryEnum.ORANGE);
+            Category c2 = newCategory("일반", CategoryEnum.GREEN);
+            Category c3 = newCategory("친구", CategoryEnum.YELLOW);
             categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
 
             Schedule s1 = newSchedule(1, ssar, c1);

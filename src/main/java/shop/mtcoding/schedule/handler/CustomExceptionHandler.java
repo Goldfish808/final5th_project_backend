@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import shop.mtcoding.schedule.dto.ResponseDto;
+import shop.mtcoding.schedule.dto.response.ResponseDto;
 import shop.mtcoding.schedule.handler.ex.CustomApiException;
 import shop.mtcoding.schedule.handler.ex.CustomForbiddenException;
 

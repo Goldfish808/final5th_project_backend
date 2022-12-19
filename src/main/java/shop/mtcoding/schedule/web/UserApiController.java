@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import shop.mtcoding.schedule.config.auth.LoginUser;
 import shop.mtcoding.schedule.domain.user.User;
-import shop.mtcoding.schedule.dto.ResponseDto;
+import shop.mtcoding.schedule.dto.response.ResponseDto;
 import shop.mtcoding.schedule.service.UserService;
 
 @RequiredArgsConstructor

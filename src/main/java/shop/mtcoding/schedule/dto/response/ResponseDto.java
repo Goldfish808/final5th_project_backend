@@ -1,4 +1,4 @@
-package shop.mtcoding.schedule.dto;
+package shop.mtcoding.schedule.dto.response;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

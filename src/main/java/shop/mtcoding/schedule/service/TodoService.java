@@ -41,4 +41,17 @@ public class TodoService {
         return todoPS;
     }
 
+    @Transactional
+    public Todo 투두종료(Long todoId, Long userId) {
+        Todo todoPS = todoRepository.findById(todoId).orElseThrow(
+                () -> new CustomApiException("투두를 찾을 수 없습니다"));
+
+        if (todoPS.getUser().getId() != userId) {
+            throw new CustomApiException("투두를 종료할 권한이 없습니다");
+        }
+
+        todoPS.setIsFinished(true);
+        return todoPS;
+    }
+
 }

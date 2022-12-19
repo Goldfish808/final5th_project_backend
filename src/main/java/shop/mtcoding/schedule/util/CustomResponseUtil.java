@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import shop.mtcoding.schedule.dto.ResponseDto;
+import shop.mtcoding.schedule.dto.response.ResponseDto;
 
 public class CustomResponseUtil {
 

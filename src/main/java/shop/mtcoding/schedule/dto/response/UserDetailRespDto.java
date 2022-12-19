@@ -1,4 +1,4 @@
-package shop.mtcoding.schedule.dto;
+package shop.mtcoding.schedule.dto.response;
 
 import java.util.ArrayList;
 import java.util.List;

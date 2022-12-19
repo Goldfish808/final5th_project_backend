@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import shop.mtcoding.schedule.domain.follow.FollowRepository;
-import shop.mtcoding.schedule.dto.ResponseDto;
+import shop.mtcoding.schedule.dto.response.ResponseDto;
 
 @RequiredArgsConstructor
 @RestController

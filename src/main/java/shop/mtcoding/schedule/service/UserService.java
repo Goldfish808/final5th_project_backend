@@ -20,7 +20,7 @@ import shop.mtcoding.schedule.domain.todo.TodoRepository;
 import shop.mtcoding.schedule.domain.user.User;
 import shop.mtcoding.schedule.domain.user.UserEnum;
 import shop.mtcoding.schedule.domain.user.UserRepository;
-import shop.mtcoding.schedule.dto.UserDetailRespDto;
+import shop.mtcoding.schedule.dto.response.UserDetailRespDto;
 import shop.mtcoding.schedule.handler.ex.CustomApiException;
 
 /*
