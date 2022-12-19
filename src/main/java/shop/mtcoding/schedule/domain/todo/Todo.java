@@ -1,54 +1,43 @@
-package shop.mtcoding.schedule.domain.user;
+package shop.mtcoding.schedule.domain.todo;
 
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import shop.mtcoding.schedule.domain.user.User;
 import shop.mtcoding.schedule.util.CustomDateUtil;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "user_tb")
+@Table(name = "todo_tb")
 @Entity
-public class User {
-
+public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String username;
+    private String titie;
+    private Boolean isFinished;
 
-    @JsonIgnore
-    @Column(nullable = false)
-    private String password;
-    @Column(nullable = false)
-    private String email;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private UserEnum role;
+    @ManyToOne
+    private User user;
 
     @LastModifiedDate
     @Column(nullable = false)
@@ -67,14 +56,14 @@ public class User {
     }
 
     @Builder
-    public User(Long id, String username, String password, String email, UserEnum role,
-            LocalDateTime updatedAt, LocalDateTime createdAt) {
+    public Todo(Long id, String titie, Boolean isFinished, User user, LocalDateTime updatedAt,
+            LocalDateTime createdAt) {
         this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.role = role;
+        this.titie = titie;
+        this.isFinished = isFinished;
+        this.user = user;
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
     }
+
 }
