@@ -25,7 +25,7 @@ public class DummyObject {
 
     protected Todo newTodo(String title, User user) {
         Todo todo = Todo.builder()
-                .titie(title)
+                .title(title)
                 .isFinished(false)
                 .user(user)
                 .build();

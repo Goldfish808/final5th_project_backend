@@ -15,9 +15,9 @@
 http://localhost:8080/join
 
 {
-    "username":"ssar",
+    "username":"hello",
     "password":"1234",
-    "email":"ssar@nate.com"
+    "email":"hello@nate.com"
 }
 ```
 

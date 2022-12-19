@@ -33,7 +33,7 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titie;
+    private String title;
     private Boolean isFinished;
 
     @ManyToOne
@@ -56,10 +56,10 @@ public class Todo {
     }
 
     @Builder
-    public Todo(Long id, String titie, Boolean isFinished, User user, LocalDateTime updatedAt,
+    public Todo(Long id, String title, Boolean isFinished, User user, LocalDateTime updatedAt,
             LocalDateTime createdAt) {
         this.id = id;
-        this.titie = titie;
+        this.title = title;
         this.isFinished = isFinished;
         this.user = user;
         this.updatedAt = updatedAt;

@@ -2,12 +2,14 @@ package shop.mtcoding.schedule.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import shop.mtcoding.schedule.config.auth.LoginUser;
 import shop.mtcoding.schedule.domain.todo.Todo;
 import shop.mtcoding.schedule.domain.todo.TodoRepository;
 import shop.mtcoding.schedule.dto.ResponseDto;
@@ -25,8 +27,9 @@ public class TodoController {
     }
 
     @PostMapping("/s/todo")
-    public ResponseEntity<?> save(@RequestBody Todo todo) {
-        Todo todoPS = todoRepository.save(todo);
+    public ResponseEntity<?> save(@RequestBody Todo todo, @AuthenticationPrincipal LoginUser loginUser) {
+        System.out.println("디버그 : todo titie : " + todo.getTitle());
+        Todo todoPS = todoService.투두작성(todo, loginUser.getUser().getId());
         return new ResponseEntity<>(new ResponseDto<>(1, "성공", todoPS), HttpStatus.OK);
     }
 
