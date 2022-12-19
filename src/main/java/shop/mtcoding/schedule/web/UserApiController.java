@@ -33,7 +33,7 @@ public class UserApiController {
     @PostMapping("/join")
     public ResponseEntity<?> join(@RequestBody User user) {
         User userPS = userService.회원가입(user);
-        return new ResponseEntity<>(new ResponseDto<>(1, "회원가입 성공", userPS), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponseDto<>(1, "회원가입 성공", userPS), HttpStatus.OK);
     }
 
 }

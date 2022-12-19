@@ -3,7 +3,7 @@
 ### 남은 일정
 - todo 작성 (save) - 완
 - schedule 작성 (사진 포함) (save) - 완
-- follow, unFollow 하기 (save or update)
+- follow, unFollow 하기 (save or update) - 완
 - todo finished api 만들기 (update) - 완
 
 ### 체크사항
