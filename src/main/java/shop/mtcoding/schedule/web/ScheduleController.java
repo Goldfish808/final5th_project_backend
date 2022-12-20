@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -50,6 +51,16 @@ public class ScheduleController {
             @AuthenticationPrincipal LoginUser loginUser, String startAt) {
         return new ResponseEntity<>(
                 new ResponseDto<>(1, "성공", scheduleService.findHome(loginUser.getUser().getId(), startAt)),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("/s/user/{followUserId}/home")
+    public ResponseEntity<?> friendsHome(
+            @PathVariable Long followUserId,
+            @AuthenticationPrincipal LoginUser loginUser, String startAt) {
+        return new ResponseEntity<>(
+                new ResponseDto<>(1, "성공",
+                        scheduleService.findFriendsHome(followUserId, loginUser.getUser().getId(), startAt)),
                 HttpStatus.OK);
     }
 

@@ -41,6 +41,24 @@ public class ScheduleService {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
 
+    public HomeRespDto findFriendsHome(Long followUserId, Long loginUserId, String startAt) {
+
+        System.out.println("디버그 : startAt : " + startAt);
+        List<Schedule> sList = scheduleRepository.findByStartAt(followUserId, startAt);
+        List<Todo> tList = todoRepository.findByUserId(followUserId);
+
+        Follow follow = followRepository.findByFollowCheck(loginUserId, followUserId);
+        if (follow == null) {
+            throw new CustomApiException("팔로우 하지 않는 친구 홈 페이지에 접속할 수 없습니다");
+        }
+
+        List<Follow> fList = followRepository.findFollowing(loginUserId);
+
+        List<User> toUsers = fList.stream().map((f) -> f.getToUser()).collect(Collectors.toList());
+
+        return new HomeRespDto(sList, tList, toUsers);
+    }
+
     public HomeRespDto findHome(Long userId, String startAt) {
 
         System.out.println("디버그 : startAt : " + startAt);
