@@ -29,10 +29,10 @@ public class DevInit extends DummyObject {
             TodoRepository todoRepository,
             FollowRepository followRepository) {
         return (args) -> {
-            User ssar = userRepository.save(newUser("ssar"));
-            User cos = userRepository.save(newUser("cos"));
-            User love = userRepository.save(newUser("love"));
-            User haha = userRepository.save(newUser("haha"));
+            User ssar = userRepository.save(newUser("ssar", "쌀"));
+            User cos = userRepository.save(newUser("cos", "코스"));
+            User love = userRepository.save(newUser("love", "러브"));
+            User haha = userRepository.save(newUser("haha", "하하"));
 
             Category c1 = newCategory("업무", CategoryEnum.PURPLE);
             Category c2 = newCategory("일반", CategoryEnum.GREEN);

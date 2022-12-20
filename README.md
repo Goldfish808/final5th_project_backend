@@ -17,7 +17,8 @@ http://localhost:8080/join
 {
     "username":"hello",
     "password":"1234",
-    "email":"hello@nate.com"
+    "email":"hello@nate.com",
+    "fullname":"헬로우유저"
 }
 ```
 

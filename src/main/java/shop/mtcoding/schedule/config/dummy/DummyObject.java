@@ -56,13 +56,14 @@ public class DummyObject {
         return category;
     }
 
-    protected User newUser(String username) {
+    protected User newUser(String username, String fullname) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encPassword = passwordEncoder.encode("1234");
         User user = User.builder()
                 .username(username)
                 .password(encPassword)
                 .email(username + "@nate.com")
+                .fullname(fullname)
                 .role(UserEnum.CUSTOMER)
                 .build();
         return user;
