@@ -33,7 +33,6 @@ public class UserApiController {
         if (jwtToken == null) {
             throw new CustomApiException("토큰이 헤더에 없습니다.");
         }
-        System.out.println("토큰이 헤더 있습니다.");
         jwtToken = jwtToken.replace(JwtVO.TOKEN_PREFIX, "");
         LoginUser loginUser = JwtProcess.verify(jwtToken);
         User userEntity = userRepository.findById(loginUser.getUser().getId())
